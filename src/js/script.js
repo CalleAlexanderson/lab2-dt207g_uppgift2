@@ -3,27 +3,31 @@
 // --------------------------------------------------
 // Initiera globala variabler och händelsehanterare
 function init() {
-    getWorks();
+    const form = document.getElementById('add_form');
+    form.onsubmit = (event) => {
+        event.preventDefault();
+        console.log("formulär skickat");
+        let cNameInp = document.getElementById('comp').value;
+        let jobTInp = document.getElementById('title').value;
+        let locInp = document.getElementById('place').value;
+        let descInp = document.getElementById('descript').value;
+
+        if (cNameInp != "" && jobTInp != "" && locInp != "" && descInp != "") {
+            console.log("funkar");
+            addWork(cNameInp, jobTInp, locInp, descInp)
+        } else {
+            alert("funkar ej")
+        }
+    };
 } // Slut init
 window.addEventListener('load', init);
 // --------------------------------------------------
 
-async function getWorks() {
-    let workplaces;
-    try {
-        const response = await fetch(`http://127.0.0.1:3000/api/workplaces`);
-        workplaces = await response.json();
-    } catch (error) {
-        console.log(error);
-    }
-    console.log(workplaces);
-}
-
-async function addWork() {
-    let cname = "ICA";
-    let jt = "Kassa ansvarig";
-    let loc = "Hägerstensåsen";
-    let desc = "Kassa chef på ICA Hägerstensåsen";
+async function addWork(c, j, l, d) {
+    let cname = c;
+    let jt = j;
+    let loc = l;
+    let desc = d;
     let newWorkplace;
 
     if (cname != "" && jt != "" && loc != "" && desc != "") {
@@ -44,4 +48,8 @@ async function addWork() {
 
     const res = await response.json();
     console.log(res);
+}
+
+async function name(params) {
+
 }

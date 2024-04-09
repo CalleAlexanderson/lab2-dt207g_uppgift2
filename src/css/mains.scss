@@ -57,5 +57,20 @@
 }
 
 #about_main{
-    
+    article{
+      border: 2px solid darkcyan;
+      width: 90%;
+      max-width: 500px;
+      margin: 10px auto;
+      border-radius: 20px;
+      h2{
+        color: darkcyan;
+        text-align: center;
+        margin: 10px;
+      }
+      p{
+        line-height: 1.2rem;
+        margin: 5px;
+      }
+    }
 }

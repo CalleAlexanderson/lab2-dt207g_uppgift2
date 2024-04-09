@@ -27,11 +27,12 @@ function displayWorks(works) {
         let jobtitle = document.createElement("h3");
         jobtitle.innerHTML = works[index].jobtitle;
         let company = document.createElement("p");
-        company.innerHTML = works[index].companyname;
+        company.innerHTML = "Företag: "+works[index].companyname;
         let loc = document.createElement("p");
-        loc.innerHTML = works[index].location;
+        loc.innerHTML = "Plats: "+works[index].location;
         let desc = document.createElement("p");
         desc.innerHTML = works[index].description;
+        desc.classList.add("artDesc")
         
         art.appendChild(jobtitle);
         art.appendChild(company);

@@ -15,8 +15,13 @@ function init() {
         if (cNameInp != "" && jobTInp != "" && locInp != "" && descInp != "") {
             console.log("funkar");
             addWork(cNameInp, jobTInp, locInp, descInp)
+            document.getElementById('comp').value = "";
+            document.getElementById('title').value = "";
+            document.getElementById('place').value = "";
+            document.getElementById('descript').value = "";
+            alert("Ny jobbpost tillagd")
         } else {
-            alert("funkar ej")
+            alert("Var snäll och fyll i alla fält för att lägga till en ny jobbpost")
         }
     };
 } // Slut init
@@ -48,8 +53,4 @@ async function addWork(c, j, l, d) {
 
     const res = await response.json();
     console.log(res);
-}
-
-async function name(params) {
-
 }

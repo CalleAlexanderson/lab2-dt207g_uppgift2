@@ -16,6 +16,7 @@ async function getWorks() {
     } catch (error) {
         console.log(error);
     }
+    console.log(workplaces);
     displayWorks(workplaces);
 }
 
@@ -32,12 +33,31 @@ function displayWorks(works) {
         loc.innerHTML = "Plats: "+works[index].location;
         let desc = document.createElement("p");
         desc.innerHTML = works[index].description;
-        desc.classList.add("artDesc")
+        desc.classList.add("artDesc");
+        let btnDelete = document.createElement("button");
+        btnDelete.innerHTML = "Ta bort jobbpost";
+        btnDelete.id = works[index].ID;
+        btnDelete.addEventListener("click",  ()=>{
+            deleteWorks(btnDelete.id)
+        })
+        // aDelete.href = `/api/workplaces/:${works[index].ID}`;
         
         art.appendChild(jobtitle);
         art.appendChild(company);
         art.appendChild(loc);
         art.appendChild(desc);
+        art.appendChild(btnDelete);
         worksDiv.appendChild(art);
+
     }
+}
+
+async function deleteWorks(id) {
+    const response = await fetch(`http://127.0.0.1:3000/api/workplaces/${id}`, {
+        method: "DELETE"
+    });
+
+    const res = await response.json();
+    console.log(res);
+    getWorks();
 }

@@ -13,6 +13,16 @@
     .artDesc {
       line-height: 1.2rem;
     }
+    button{
+      padding: 2px;
+      color: black;
+      background-color: white;
+      border: 1px solid black;
+    }
+    button:hover{
+      background-color: rgb(225, 225, 225);
+      transition: 0.25s;
+    }
   }
 }
 
